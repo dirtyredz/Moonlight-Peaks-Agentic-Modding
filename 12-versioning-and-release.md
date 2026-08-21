@@ -28,9 +28,13 @@ They were collapsed into a single **0.7.0**.
 - **One CHANGELOG entry per released version**, not per build. Fold the iterations into the
   release entry, including anything tried and reverted; that history is useful and belongs
   there rather than in five stub entries.
-- **Keep `<Version>` in the csproj and `PluginVersion` in Plugin.cs in step.** The packaging
-  script names the archive from the csproj; BepInEx reports the attribute. Disagreement means
-  an archive that lies about its contents.
+- **The version lives in one place: `<Version>` in the csproj.** An MSBuild target
+  (`GenerateModBuildInfo`, in each mod's `Directory.Build.props`) generates a compile-time
+  `ModBuildInfo.Version` constant from it, and `Plugin.cs` sets
+  `PluginVersion = ModBuildInfo.Version`. So the attribute BepInEx reports and the archive name
+  `pack.ps1` builds both come from the csproj and can never disagree. **Never hardcode a version
+  string in `Plugin.cs`** — bump the csproj only. (New mods inherit this by copying an existing
+  mod's `Directory.Build.props`.)
 
 ### What each part means
 
@@ -89,7 +93,8 @@ Visual integration first — it is the easiest thing to ship wrong. See
       only as a fallback
 - [ ] Colours come from the game's palette
 - [ ] No flat rectangles where the game would use a rounded, rimmed panel
-- [ ] `<Version>` and `PluginVersion` match, and the version was bumped for **this release**
+- [ ] `<Version>` in the csproj was bumped for **this release** (`Plugin.cs` derives from it via
+      `ModBuildInfo.Version`, so there is nothing to keep in sync)
 - [ ] CHANGELOG has one entry for this version
 - [ ] Tests pass
 - [ ] Diagnostics default to off
@@ -97,3 +102,26 @@ Visual integration first — it is the easiest thing to ship wrong. See
 - [ ] Save verified untouched, per [11-mod-data-and-saves.md](11-mod-data-and-saves.md)
 - [ ] Screenshots show the **current** build, not a previous release
 - [ ] Archive extracted onto a clean install and verified in game
+
+---
+
+## Commit and tag every release
+
+Each mod is its own git repo (`origin` on GitHub under `dirtyredz`). Commit under the `dirtyredz`
+identity that global git config is set to — **never a work email**. A published version must be a
+real, tagged commit:
+
+1. **Commit the release as one commit** — the csproj bump, the CHANGELOG entry, and any release
+   code together. Do not publish from an uncommitted working tree. (Chest Labels 1.0.1 and Plant
+   Peek 1.0.1 were shipped uncommitted and had to be reconstructed afterwards — the thing this
+   rule exists to prevent.)
+2. **Tag it** annotated at that commit and push branch and tag:
+
+   ```bash
+   git tag -a v1.2.3 -m "Release 1.2.3"
+   git push origin main
+   git push origin v1.2.3
+   ```
+
+3. The `vX.Y.Z` tag is the record of exactly what shipped to Nexus. One tag per published
+   version; dev builds are not tagged.
