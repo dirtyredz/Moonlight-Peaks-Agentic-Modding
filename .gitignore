@@ -1,0 +1,20 @@
+# Each mod under mods/ is its own git repo, tracked separately on GitHub.
+# This root repo only tracks the shared instructions and the mod index in README.md.
+mods/
+
+# Packaged release archives
+dist/
+
+# Save backups — never publish these
+save-backup-*/
+
+# Claude Code: track shared skills/config, but not machine-local settings
+# or the transient worktrees Claude creates (each has its own embedded .git).
+.claude/settings.local.json
+.claude/worktrees/
+
+# OS / editor cruft
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
