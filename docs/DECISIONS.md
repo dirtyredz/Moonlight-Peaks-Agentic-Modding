@@ -3,14 +3,17 @@
 Choices worth not re-litigating, newest first. Drawn from the numbered guides, git history, and
 prior sessions. Where rationale isn't recorded, it's marked.
 
-## 2026-08-22 — `pack.ps1` unified as a generic template distributed by a sync script
+## 2026-08-22 — Shared mod files (`pack.ps1`, `Directory.Build.props`) unified via one sync tool
 
 **Decision:** Replace the 11 hand-copied `pack.ps1` scripts with one **generic** script
 (`tools/pack.template.ps1`) that derives the mod name, paths, and version at runtime from
-`src/*.csproj`, so it is byte-identical in every mod. `tools/sync-pack.ps1` copies it into each mod
-(UTF-8 no BOM); `-Check` reports drift and exits non-zero (CI guard). Canonical behaviour: write the
-archive to the mod's own `dist/` (correct for a standalone clone) and additionally mirror to the
-shared root `dist/` when running under `mods/`.
+`src/*.csproj`, so it is byte-identical in every mod. Canonical behaviour: write the archive to the
+mod's own `dist/` (correct for a standalone clone) and additionally mirror to the shared root `dist/`
+when running under `mods/`. `Directory.Build.props` (already mod-agnostic — game paths + the version
+target) is standardized the same way: canonical copy in `tools/`, at **every mod's root** (the two
+copies mislocated in `src/` were moved), byte-identical everywhere. Both files are distributed by one
+tool, `tools/sync-mod-files.ps1` (byte-exact copy; `-Check` reports drift and exits non-zero — CI
+guard), rather than a separate script per file.
 **Why:** the copies had drifted and a packing fix meant 11 hand-edits. A generic file needs no
 per-mod substitution, so "sync" is a plain copy — the strongest anti-drift design under the
 standalone-repo constraint (the file must still physically live in each mod). Fixed a latent bug: the

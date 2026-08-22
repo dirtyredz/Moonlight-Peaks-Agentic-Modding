@@ -1,0 +1,23 @@
+<Project>
+
+  <PropertyGroup>
+    <MoonlightPeaksGamePath>C:\Program Files (x86)\Steam\steamapps\common\Moonlight Peaks</MoonlightPeaksGamePath>
+    <MoonlightPeaksManagedPath>$(MoonlightPeaksGamePath)\Moonlight Peaks_Data\Managed</MoonlightPeaksManagedPath>
+    <MoonlightPeaksBepInExCorePath>$(MoonlightPeaksGamePath)\BepInEx\core</MoonlightPeaksBepInExCorePath>
+    <MoonlightPeaksPluginDeployPath>$(MoonlightPeaksGamePath)\BepInEx\plugins\MoonlightPeaksMods</MoonlightPeaksPluginDeployPath>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+
+  <!-- Single source of truth for the plugin version: generate a compile-time constant
+       from the csproj <Version> so [BepInPlugin] never drifts from a hardcoded string. -->
+  <Target Name="GenerateModBuildInfo" BeforeTargets="CoreCompile">
+    <WriteLinesToFile
+      File="$(IntermediateOutputPath)ModBuildInfo.g.cs"
+      Overwrite="true"
+      Lines="// &lt;auto-generated&gt; version comes from the csproj &lt;Version&gt;;internal static class ModBuildInfo { public const string Version = &quot;$(Version)&quot;%3B }" />
+    <ItemGroup>
+      <Compile Include="$(IntermediateOutputPath)ModBuildInfo.g.cs" />
+    </ItemGroup>
+  </Target>
+</Project>

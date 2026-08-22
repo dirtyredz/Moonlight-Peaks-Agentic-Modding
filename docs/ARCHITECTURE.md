@@ -41,9 +41,8 @@ BepInEx-reported version  ── and ──  pack.ps1 reads the csproj for the a
 [DECISIONS.md](DECISIONS.md) and root `12-versioning-and-release.md`). First published version of any
 mod is `1.0.0` regardless of dev build numbers.
 
-> Caveat: `GenerateModBuildInfo` lives in `Directory.Build.props`, which **CoffinBreak and PlantPeek
-> lack** — so this exact chain doesn't hold for them; confirm how those two source their version
-> before relying on it. Standardizing this is tracked in [BACKLOG.md](BACKLOG.md).
+> `GenerateModBuildInfo` lives in `Directory.Build.props`, which is now standardized at every mod's
+> root and kept byte-identical by `tools/sync-mod-files.ps1`, so this chain holds for all mods.
 
 ## Release flow
 

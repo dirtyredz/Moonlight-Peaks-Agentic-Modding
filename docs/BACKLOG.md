@@ -7,16 +7,18 @@ Per-mod feature work lives in each mod's repo; this is the workspace-level list.
 
 - [x] **Unify the 11 `pack.ps1` copies.** **Done 2026-08-22.** `pack.ps1` is now generic (derives
       everything at runtime) and lives in `tools/pack.template.ps1`, distributed byte-identical to
-      every mod by `tools/sync-pack.ps1` (`-Check` = CI drift guard). Verified end-to-end by packing
+      every mod by `tools/sync-mod-files.ps1` (`-Check` = CI drift guard). Verified end-to-end by packing
       ModNook. Fixed a latent standalone-clone bug in the ChestLabels-style copies as a bonus.
 - [x] **`BiggerUI` has no `pack.ps1`.** ~~Add one~~ — moot: BiggerUI was **retired 2026-08-22** (never
       published, unmaintained). Exclude it from the pack.ps1 unify task.
 
 ## P1 — inconsistency
 
-- [ ] **Standardize `Directory.Build.props`.** 8 mods identical; ChestLabels & Vampscape carry a
-      variant; **CoffinBreak & PlantPeek have none**. Decide the canonical version, reconcile the two
-      variants, add the two missing. Fold into the same sync tool as `pack.ps1`.
+- [x] **Standardize `Directory.Build.props`.** **Done 2026-08-22.** Correction: all 12 mods always had
+      it with identical content — the drift was whitespace, plus two copies mislocated in `src/`
+      (CoffinBreak, PlantPeek, now moved to the mod root). Canonical in `tools/Directory.Build.props`,
+      distributed byte-identical by the generalized `tools/sync-mod-files.ps1` (which now syncs both
+      `pack.ps1` and `Directory.Build.props`). Verified by packing CoffinBreak after the move.
 - [ ] **Root build/pack/status tooling.** No single command to build all, pack all, or report per-mod
       health (missing files, version vs. dist, uncommitted changes). Add a root script.
 - [x] **README stale line.** "This directory is **not** a repository" — fixed 2026-08-22 (the line now

@@ -34,7 +34,7 @@ version-single-source release chain, the Nexus page pipeline — is described in
 | **Our-setup / ideas** | This machine's capability + the idea ladder | `07-our-setup.md`, `08-mod-ideas.md` | `08` is the roadmap source ([docs/ROADMAP.md](docs/ROADMAP.md)) |
 | **Visual/data contracts** | Rules a mod must obey to look/behave native | `10`–`11`, `16`, `17` | read-before-you-code gates |
 | **Release + Nexus pipeline** | Versioning, packaging, page standard/style | `12`–`15` | the release workflow all mods share |
-| **Cross-mod tooling** | Canonical packer + drift-free distribution | `tools/pack.template.ps1`, `tools/sync-pack.ps1` | edit the template, re-run sync |
+| **Cross-mod tooling** | Canonical shared mod files + drift-free distribution | `tools/pack.template.ps1`, `tools/Directory.Build.props`, `tools/sync-mod-files.ps1` | edit a canonical file, re-run sync |
 | **Nexus-publish skill** | Drives Chrome to publish/update a mod page | `.claude/skills/nexus-publish/SKILL.md` | the publish automation |
 | **Repo meta** | How to work here + the multi-repo boundary | `CLAUDE.md`, `.gitignore` (excludes `mods/`, `dist/`, backups), this doc set | edit when conventions or the gate change |
 
@@ -48,9 +48,9 @@ version-single-source release chain, the Nexus page pipeline — is described in
 ## Conventions
 
 - Numbered guides are ordered by reading sequence, not priority; `07` is the real "start here".
-- Each mod is self-contained: docs + `pack.ps1` at its root, plugin `.cs` **directly in `src/`**
-  (no `src/<ModName>/`). Not every mod has every file — `pack.ps1` and `Directory.Build.props` have
-  gaps (see Structural debt). See [docs/GOTCHAS.md](docs/GOTCHAS.md).
+- Each mod is self-contained: `pack.ps1` and `Directory.Build.props` at its root, plugin `.cs`
+  **directly in `src/`** (no `src/<ModName>/`). Those two shared files are kept byte-identical across
+  mods by `tools/sync-mod-files.ps1`. See [docs/GOTCHAS.md](docs/GOTCHAS.md).
 - Commit identity for this repo and mods: `dirtyredz <dirtyredz@live.com>`.
 
 ## Where to find things
@@ -67,11 +67,13 @@ list with priorities in [docs/BACKLOG.md](docs/BACKLOG.md). Headlines:
 
 - ~~**11 divergent `pack.ps1` copies**~~ **RESOLVED 2026-08-22.** `pack.ps1` is now a generic script
   (derives mod name/version/paths at runtime) kept in `tools/pack.template.ps1` and distributed
-  byte-identical to every mod by `tools/sync-pack.ps1` (`-Check` fails on drift, for CI). Unifying
+  byte-identical to every mod by `tools/sync-mod-files.ps1` (`-Check` fails on drift, for CI). Unifying
   also fixed a latent bug: the ChestLabels-style copies hardcoded the grandparent as repo root and
   would break if cloned standalone.
-- **`Directory.Build.props` inconsistent** — 8 identical, ChestLabels & Vampscape variant, **CoffinBreak
-  & PlantPeek have none**. The "shared game paths" are not actually shared.
+- ~~**`Directory.Build.props` inconsistent**~~ **RESOLVED 2026-08-22.** All 12 mods always had it with
+  identical content; the drift was whitespace + two copies mislocated in `src/` (CoffinBreak,
+  PlantPeek). Now canonical in `tools/Directory.Build.props`, at each mod's root, distributed
+  byte-identical by `tools/sync-mod-files.ps1`.
 - **No root build-all / status tooling** — packing and health-checking is manual, per folder.
 
 _Living doc — refresh with /project-docs when it drifts._
