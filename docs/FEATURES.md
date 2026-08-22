@@ -17,12 +17,12 @@ Versions/statuses mirror [../README.md](../README.md) — update both together.
 | FormLock | 1.0.0 | [141](https://www.nexusmods.com/moonlightpeaks/mods/141) | keeps Cat/Bat/Aqua form through pickups/harvests |
 | PurrtasticPalette | 1.1.0 | [142](https://www.nexusmods.com/moonlightpeaks/mods/142) | recolours Cat Form (fur, whiskers, eyes, trail) |
 | FangtasticPalette | 1.0.0 | [143](https://www.nexusmods.com/moonlightpeaks/mods/143) | recolours Bat Form (body, wings, face, trail) |
+| DeadReckoning | 1.1.0 | [144](https://www.nexusmods.com/moonlightpeaks/mods/144) | floating skull that leads you to a tracked NPC/place/map-pin |
 
 ## In progress (unpublished)
 
-| Mod | Ver | Status |
-|---|---|---|
-| DeadReckoning | 0.x | floating skull that steers you to a tracked NPC/place/map-pin; replaces Quest & Character Tracker idea |
+_None right now._ Note: FormLock, LastSwing, and ModNook each carry a committed-but-unpublished
+feature on top of their live release — see [BACKLOG.md](BACKLOG.md).
 
 ## Retired
 

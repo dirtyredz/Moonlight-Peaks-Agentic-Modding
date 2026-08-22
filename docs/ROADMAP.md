@@ -6,7 +6,10 @@ the five-minute check in `08-mod-ideas.md`.
 
 ## Now — finish what's in flight
 
-- **DeadReckoning** (v0.x) → floating skull tracker; steer via `Mover.Move`, save-safe. Toward 1.0.0.
+- **DeadReckoning** — ✅ **released** ([Nexus mod 144](https://www.nexusmods.com/moonlightpeaks/mods/144),
+  v1.1.0). Nothing else actively in flight.
+- **Unpublished features to ship**: FormLock, LastSwing, ModNook each have a committed feature awaiting
+  test → version bump → release. See [BACKLOG.md](BACKLOG.md).
 
 > **BiggerUI retired** (2026-08-22) — never published; no longer maintained. See [FEATURES.md](FEATURES.md#retired).
 
