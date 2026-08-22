@@ -40,6 +40,8 @@ Versions/statuses mirror [../README.md](../README.md) — update both together.
     release zip from the single-source csproj version.
   - `tools/Directory.Build.props` → each mod's `Directory.Build.props` — shared game DLL references +
     `GenerateModBuildInfo` version target.
+- **`tools/status-mods.ps1`** — read-only health dashboard: per mod, its version, whether the matching
+  `dist/<Mod>-<ver>.zip` exists, git dirty count, ahead/behind remote, and shared-file drift.
 - **Tastic Palette series** — reusable form-recolour methodology (Purrtastic→Fangtastic→planned
   Fintastic); see [ROADMAP.md](ROADMAP.md).
 

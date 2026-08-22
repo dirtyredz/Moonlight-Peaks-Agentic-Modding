@@ -29,7 +29,8 @@ priorities in [BACKLOG.md](BACKLOG.md).
 1. ✅ **Unify `pack.ps1`** (2026-08-22) — generic template + `tools/sync-mod-files.ps1` drift guard.
 2. ✅ **Standardize `Directory.Build.props`** (2026-08-22) — canonical in `tools/`, at every mod root,
    synced byte-identical by the same tool.
-3. **Root build/pack/status tooling** — one command to build, pack, or health-check every mod.
+3. **Root mods tooling** — ✅ **status dashboard** (`tools/status-mods.ps1`) shipped 2026-08-22;
+   build-all / pack-all still open.
 4. **Structure-review gate + living docs** — installed for the root 2026-08-22; extend per mod as
    they warrant it.
 

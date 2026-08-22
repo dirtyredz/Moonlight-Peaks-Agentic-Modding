@@ -19,8 +19,9 @@ Per-mod feature work lives in each mod's repo; this is the workspace-level list.
       (CoffinBreak, PlantPeek, now moved to the mod root). Canonical in `tools/Directory.Build.props`,
       distributed byte-identical by the generalized `tools/sync-mod-files.ps1` (which now syncs both
       `pack.ps1` and `Directory.Build.props`). Verified by packing CoffinBreak after the move.
-- [ ] **Root build/pack/status tooling.** No single command to build all, pack all, or report per-mod
-      health (missing files, version vs. dist, uncommitted changes). Add a root script.
+- [~] **Root build/pack/status tooling.** **Status shipped 2026-08-22** — `tools/status-mods.ps1`
+      reports per-mod version, dist-zip presence, git dirty count, ahead/behind, and shared-file drift.
+      Still open: a **build-all / pack-all** command (run every mod's `pack.ps1` in one go).
 - [x] **README stale line.** "This directory is **not** a repository" — fixed 2026-08-22 (the line now
       states the root is its own repo containing the nested mod repos).
 
