@@ -3,6 +3,22 @@
 Choices worth not re-litigating, newest first. Drawn from the numbered guides, git history, and
 prior sessions. Where rationale isn't recorded, it's marked.
 
+## 2026-08-22 — `pack.ps1` unified as a generic template distributed by a sync script
+
+**Decision:** Replace the 11 hand-copied `pack.ps1` scripts with one **generic** script
+(`tools/pack.template.ps1`) that derives the mod name, paths, and version at runtime from
+`src/*.csproj`, so it is byte-identical in every mod. `tools/sync-pack.ps1` copies it into each mod
+(UTF-8 no BOM); `-Check` reports drift and exits non-zero (CI guard). Canonical behaviour: write the
+archive to the mod's own `dist/` (correct for a standalone clone) and additionally mirror to the
+shared root `dist/` when running under `mods/`.
+**Why:** the copies had drifted and a packing fix meant 11 hand-edits. A generic file needs no
+per-mod substitution, so "sync" is a plain copy — the strongest anti-drift design under the
+standalone-repo constraint (the file must still physically live in each mod). Fixed a latent bug: the
+ChestLabels-style copies hardcoded the grandparent as repo root and would break if cloned standalone.
+**Rejected:** a shared `pack.psm1` module each mod dot-sources — breaks the standalone constraint
+unless vendored, which just reintroduces the copy. Per-mod placeholder substitution — leaves room to
+drift and needs a parser; a fully generic script avoids substitution entirely.
+
 ## 2026-08-22 — Structure-review gate + living docs on the root repo
 
 **Decision:** Onboard the root repo (this doc set + a pre-push review gate). The root is a real

@@ -34,7 +34,9 @@ Versions/statuses mirror [../README.md](../README.md) — update both together.
 
 - **nexus-publish skill** — Chrome automation to publish/update a mod page, restyle a description, or
   deploy a new page.
-- **Per-mod `pack.ps1`** — builds the Nexus-layout release zip from the single-source csproj version.
+- **`pack.ps1` (generic) + `tools/sync-pack.ps1`** — one canonical packer in `tools/pack.template.ps1`,
+  distributed byte-identical to every mod; builds the Nexus-layout release zip from the single-source
+  csproj version. `sync-pack.ps1 -Check` guards against drift.
 - **`Directory.Build.props`** — shared game DLL references + `GenerateModBuildInfo` version target
   (present in most mods; see [BACKLOG.md](BACKLOG.md) for the gaps).
 - **Tastic Palette series** — reusable form-recolour methodology (Purrtastic→Fangtastic→planned

@@ -5,12 +5,10 @@ Per-mod feature work lives in each mod's repo; this is the workspace-level list.
 
 ## P0 — drift that will bite
 
-- [ ] **Unify the 11 `pack.ps1` copies.** Each mod hand-copies the same script (48–79 lines) differing
-      mostly by name, and they've already diverged (Vampscape and LastSwing carry a shared-`dist/`
-      mirror block; repo-root detection differs between copies). A packing fix must be made 11×. → one
-      canonical template at root +
-      a `sync-tooling` script that regenerates each mod's `pack.ps1`. Honor the standalone-repo
-      constraint: the file must still physically exist in each mod.
+- [x] **Unify the 11 `pack.ps1` copies.** **Done 2026-08-22.** `pack.ps1` is now generic (derives
+      everything at runtime) and lives in `tools/pack.template.ps1`, distributed byte-identical to
+      every mod by `tools/sync-pack.ps1` (`-Check` = CI drift guard). Verified end-to-end by packing
+      ModNook. Fixed a latent standalone-clone bug in the ChestLabels-style copies as a bonus.
 - [x] **`BiggerUI` has no `pack.ps1`.** ~~Add one~~ — moot: BiggerUI was **retired 2026-08-22** (never
       published, unmaintained). Exclude it from the pack.ps1 unify task.
 

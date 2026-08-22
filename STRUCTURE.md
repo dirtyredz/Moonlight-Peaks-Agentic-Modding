@@ -34,6 +34,7 @@ version-single-source release chain, the Nexus page pipeline — is described in
 | **Our-setup / ideas** | This machine's capability + the idea ladder | `07-our-setup.md`, `08-mod-ideas.md` | `08` is the roadmap source ([docs/ROADMAP.md](docs/ROADMAP.md)) |
 | **Visual/data contracts** | Rules a mod must obey to look/behave native | `10`–`11`, `16`, `17` | read-before-you-code gates |
 | **Release + Nexus pipeline** | Versioning, packaging, page standard/style | `12`–`15` | the release workflow all mods share |
+| **Cross-mod tooling** | Canonical packer + drift-free distribution | `tools/pack.template.ps1`, `tools/sync-pack.ps1` | edit the template, re-run sync |
 | **Nexus-publish skill** | Drives Chrome to publish/update a mod page | `.claude/skills/nexus-publish/SKILL.md` | the publish automation |
 | **Repo meta** | How to work here + the multi-repo boundary | `CLAUDE.md`, `.gitignore` (excludes `mods/`, `dist/`, backups), this doc set | edit when conventions or the gate change |
 
@@ -64,10 +65,11 @@ version-single-source release chain, the Nexus page pipeline — is described in
 The root repo's *content* is healthy; the **cross-mod tooling** it standardizes has drifted. Full
 list with priorities in [docs/BACKLOG.md](docs/BACKLOG.md). Headlines:
 
-- **11 divergent `pack.ps1` copies** (the 12th mod, BiggerUI, is retired and needs none) — hand-copied and
-  drifted: they span 48–79 lines, some (Vampscape, LastSwing) carry a shared-`dist/` mirror block,
-  and repo-root detection differs between copies. The standalone-repo constraint forced the copy;
-  nothing keeps them in sync. → a root template + `sync`/generator.
+- ~~**11 divergent `pack.ps1` copies**~~ **RESOLVED 2026-08-22.** `pack.ps1` is now a generic script
+  (derives mod name/version/paths at runtime) kept in `tools/pack.template.ps1` and distributed
+  byte-identical to every mod by `tools/sync-pack.ps1` (`-Check` fails on drift, for CI). Unifying
+  also fixed a latent bug: the ChestLabels-style copies hardcoded the grandparent as repo root and
+  would break if cloned standalone.
 - **`Directory.Build.props` inconsistent** — 8 identical, ChestLabels & Vampscape variant, **CoffinBreak
   & PlantPeek have none**. The "shared game paths" are not actually shared.
 - **No root build-all / status tooling** — packing and health-checking is manual, per folder.
