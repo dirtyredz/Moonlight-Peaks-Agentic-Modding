@@ -64,13 +64,12 @@ version-single-source release chain, the Nexus page pipeline — is described in
 The root repo's *content* is healthy; the **cross-mod tooling** it standardizes has drifted. Full
 list with priorities in [docs/BACKLOG.md](docs/BACKLOG.md). Headlines:
 
-- **11 divergent `pack.ps1` copies** (BiggerUI is the 12th mod and has none) — hand-copied and
+- **11 divergent `pack.ps1` copies** (the 12th mod, BiggerUI, is retired and needs none) — hand-copied and
   drifted: they span 48–79 lines, some (Vampscape, LastSwing) carry a shared-`dist/` mirror block,
   and repo-root detection differs between copies. The standalone-repo constraint forced the copy;
   nothing keeps them in sync. → a root template + `sync`/generator.
 - **`Directory.Build.props` inconsistent** — 8 identical, ChestLabels & Vampscape variant, **CoffinBreak
   & PlantPeek have none**. The "shared game paths" are not actually shared.
 - **No root build-all / status tooling** — packing and health-checking is manual, per folder.
-- **`BiggerUI` has no `pack.ps1`** — can't go through the standard release flow.
 
 _Living doc — refresh with /project-docs when it drifts._

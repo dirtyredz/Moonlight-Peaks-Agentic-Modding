@@ -6,8 +6,9 @@ the five-minute check in `08-mod-ideas.md`.
 
 ## Now — finish what's in flight
 
-- **BiggerUI** (v0.10.0) → first publish. Needs a `pack.ps1` and a release pass first.
 - **DeadReckoning** (v0.x) → floating skull tracker; steer via `Mover.Move`, save-safe. Toward 1.0.0.
+
+> **BiggerUI retired** (2026-08-22) — never published; no longer maintained. See [FEATURES.md](FEATURES.md#retired).
 
 ## Next — mod ideas still open
 

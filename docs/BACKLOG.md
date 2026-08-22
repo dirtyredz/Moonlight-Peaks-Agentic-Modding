@@ -11,8 +11,8 @@ Per-mod feature work lives in each mod's repo; this is the workspace-level list.
       canonical template at root +
       a `sync-tooling` script that regenerates each mod's `pack.ps1`. Honor the standalone-repo
       constraint: the file must still physically exist in each mod.
-- [ ] **`BiggerUI` has no `pack.ps1`.** It can't be released through the standard flow. Add one (falls
-      out of the unify task).
+- [x] **`BiggerUI` has no `pack.ps1`.** ~~Add one~~ — moot: BiggerUI was **retired 2026-08-22** (never
+      published, unmaintained). Exclude it from the pack.ps1 unify task.
 
 ## P1 — inconsistency
 

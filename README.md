@@ -1,7 +1,7 @@
 # Moonlight Peaks Modding Notes
 
 Working notes on the Moonlight Peaks mod scene and how mods are actually built — and the
-twelve mods built from them (ten published, two in progress).
+twelve mods built from them (ten published, one in progress, one retired).
 
 **Snapshot date:** 2026-08-04. The game launched 2026-07-07, so everything here is
 about a month old and moving fast — re-check numbers and tool versions before relying on them.
@@ -30,7 +30,7 @@ about a month old and moving fast — re-check numbers and tool versions before 
 
 ## Mods
 
-Ten published, two in progress. Root docs (`01`–`17`) are general and apply to every mod; each
+Ten published, one in progress, one retired (Bigger UI). Root docs (`01`–`17`) are general and apply to every mod; each
 mod has its own directory under `mods/` with its own README, research notes, source and
 release process.
 
@@ -46,7 +46,7 @@ release process.
 | [mods/FormLock](mods/FormLock/README.md) | 1.0.0 | 🚀 [Nexus mod 141](https://www.nexusmods.com/moonlightpeaks/mods/141) — keeps Cat/Bat/Aqua form on through pickups and harvests |
 | [mods/PurrtasticPalette](mods/PurrtasticPalette/README.md) | 1.1.0 | 🚀 [Nexus mod 142](https://www.nexusmods.com/moonlightpeaks/mods/142) — recolours Cat Form's fur, whiskers, eyes and trail |
 | [mods/FangtasticPalette](mods/FangtasticPalette/README.md) | 1.0.0 | 🚀 [Nexus mod 143](https://www.nexusmods.com/moonlightpeaks/mods/143) — recolours Bat Form's body, wings, face and trail |
-| [mods/BiggerUI](mods/BiggerUI/README.md) | 0.10.0 | in progress; scales UI font sizes for readability, unpublished |
+| [mods/BiggerUI](mods/BiggerUI/README.md) | 0.10.0 | 🪦 retired; scaled UI font sizes for readability, never published |
 | [mods/DeadReckoning](mods/DeadReckoning/README.md) | 0.x | in progress; floating skull that steers you to a tracked NPC, place or map pin, unpublished |
 
 Page copy for the published mods lives in each mod's `NEXUS.md` (the readable draft) and `nexus-paste.md`

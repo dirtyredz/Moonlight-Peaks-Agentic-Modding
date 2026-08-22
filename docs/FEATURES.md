@@ -22,8 +22,13 @@ Versions/statuses mirror [../README.md](../README.md) — update both together.
 
 | Mod | Ver | Status |
 |---|---|---|
-| BiggerUI | 0.10.0 | scales UI font sizes for readability. **Missing `pack.ps1`** — not release-ready |
 | DeadReckoning | 0.x | floating skull that steers you to a tracked NPC/place/map-pin; replaces Quest & Character Tracker idea |
+
+## Retired
+
+| Mod | Ver | Status |
+|---|---|---|
+| BiggerUI | 0.10.0 | scaled UI font sizes for readability. Built and deployed but **never published**; no longer maintained (retired 2026-08-22). Repo kept at [github.com/dirtyredz/Bigger-UI](https://github.com/dirtyredz/Bigger-UI) for its bug write-ups. |
 
 ## Shared tooling / capabilities
 
