@@ -27,8 +27,14 @@ Per-mod feature work lives in each mod's repo; this is the workspace-level list.
 
 ## P2 — housekeeping
 
-- [ ] **Loose uncommitted work** in several mods (as of 2026-08-22): CoffinBreak, FormLock, LastSwing,
-      ModNook, Transplant. Review and commit or discard so the next release sees a clean tree.
+- [x] **Loose uncommitted work** in 5 mods — **committed + pushed 2026-08-22** as unreleased WIP
+      checkpoints (all built clean first). Turned out to be finished-looking feature work, not tidy-up.
+- [ ] **Unreleased features awaiting a publish decision** (P1-ish): three mods now carry committed but
+      unpublished features on top of their live 1.0.0 — **FormLock** (form-pickup stutter fix),
+      **LastSwing** (killing-blow detection for rocks/ore off-grid), **ModNook** (gamepad cancel, Proton
+      overlay fix, long-name overflow, prose choice-parser). Each needs: in-game test → version bump +
+      CHANGELOG → repackage → Nexus update. CoffinBreak/Transplant also have refreshed page copy that
+      may need pushing to their Nexus pages.
 - [ ] **Doc-set drift guards per mod.** Consider extending the living-doc set / gate into individual
       mod repos as they grow (currently root-only).
 
