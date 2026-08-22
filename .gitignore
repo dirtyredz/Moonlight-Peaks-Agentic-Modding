@@ -18,3 +18,7 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 *.swp
+
+# Structure-review gate markers (local only)
+.structure-review-pending
+.structure-review-paused

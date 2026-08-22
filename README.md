@@ -1,7 +1,7 @@
 # Moonlight Peaks Modding Notes
 
 Working notes on the Moonlight Peaks mod scene and how mods are actually built — and the
-seven mods built from them.
+twelve mods built from them (ten published, two in progress).
 
 **Snapshot date:** 2026-08-04. The game launched 2026-07-07, so everything here is
 about a month old and moving fast — re-check numbers and tool versions before relying on them.
@@ -55,8 +55,9 @@ Page copy for the published mods lives in each mod's `NEXUS.md` (the readable dr
 
 ## Folder layout
 
-This directory is **not a repository** — it is a working folder holding the shared notes and
-the mod directories. Each mod has its own repo where that matters.
+This directory **is its own git repository** (tracking the shared notes and the mod index), and it
+also **contains** the mod directories — each of which is its own separate repo. Git tooling here
+never descends into the nested mod repos; they're tracked and released independently.
 
 ```
 .
